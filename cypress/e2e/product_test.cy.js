@@ -13,19 +13,28 @@ describe('Testes de Produtos', () => {
     });
   
           
-    it('Deve visualizar a lista de produtos', () => {
+    it( `Dado que o usuário acessa a página de login
+         Quando ele insere credenciais válidas
+         E clica no botão de login
+         Então ele deve ser redirecionado para página de produtos
+         E a lista de produtos deve ser exibida`, () => {
       inventoryPage.assertProductListVisible();
 
     });
   
-    it('Deve adicionar um produto ao carrinho', () => {
+    it(` Dado que o usuário está na página de produtos
+         Quando ele clicar em "add cart" de um produto
+         Então o produto deve aparecer na página do carrinho`, () => {
       inventoryPage.addProductToCart(produto);
       inventoryPage.goToCart();
       cy.contains(produto)
       .should('be.visible');
     });
   
-    it.only('Deve remover um produto do carrinho', () => {
+    it(`Dado que o usuário adicionou um produto ao carrinho
+        Quando ele acessa a página do carrinho
+        E clica no botão "Remover" do produto
+        Então o produto não deve mais estar no carrinho`, () => {
       inventoryPage.addProductToCart(produto);
       inventoryPage.goToCart();
       cartPage.removeProductFromCart(produto);   

@@ -14,7 +14,13 @@ describe('Testes de Checkout', () => {
     });
   
       
-    it('Deve finalizar a compra com sucesso', () => {
+    it(` Dado que o usuário adicionou um produto ao carrinho
+         Quando ele acessa a página do carrinho
+         E clica no botão "checkout"
+         E preenche as informações de pagamento e envio
+         E confirma a compra
+         Então ele deve ver uma mensagem de confirmação de pedido
+         E a compra deve ser finalizada com sucesso `, () => {
       cartPage.clickCheckout();
       checkoutPage.fillCheckoutForm('João', 'Silva', '12345');
       checkoutPage.submitCheckoutForm();
